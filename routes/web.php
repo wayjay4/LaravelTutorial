@@ -19,8 +19,9 @@ Route::get('/', function () {
       'Get some gas',
       'Make some lunch'
     ];
+    $hobbies = DB::table('hobbies')->get();
 
-    return view('welcome', compact('name', 'age', 'tasks'));
+    return view('welcome', compact('name', 'age', 'tasks', 'hobbies'));
 });
 
 Route::get('/about', function(){
