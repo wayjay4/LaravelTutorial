@@ -16,10 +16,7 @@ class WelcomeController extends Controller
         'Make some lunch'
       ];
 
-      // get data from database
-      $hobbies = Hobby::all();  // using eloquent, using name space
-
-      return view('welcome', compact('name', 'age', 'tasks', 'hobbies'));
+      return view('welcome', compact('name', 'age', 'tasks'));
     }
 
     public function about()

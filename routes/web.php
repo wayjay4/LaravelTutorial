@@ -11,7 +11,7 @@
 |
 */
 
-use App\Hobby;   // used to import the class Hobby, so we can use a shortened ref to Hobby
+
 
 Route::get('/', 'WelcomeController@index');
 
