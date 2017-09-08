@@ -24,6 +24,8 @@ Route::get('/hobbies/{hobbies}', 'HobbyController@show');
 // second part of tutorial: creating Blog
 Route::get('/posts', 'PostController@index');
 
+Route::get('/posts/{post}', 'PostController@show');
+
 // for resources like this you typically need:
 // -Eloquent Model => Post
 // -controller => Posts
