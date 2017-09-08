@@ -13,10 +13,8 @@ class HobbyController extends Controller
       return view('hobbies/index', compact('hobbies'));
     }
 
-    public function show($id)
+    public function show(Hobby $hobby)  //route model binding: Hobby::find(wildcard);
     {
-      $hobby = Hobby::find($id);  // using eloquent, using name space
-
       //dd($hobby); // dispays json contents by default
 
       return view('hobbies/show', compact('hobby'));
