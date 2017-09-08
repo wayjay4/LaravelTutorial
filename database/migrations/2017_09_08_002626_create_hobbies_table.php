@@ -16,6 +16,7 @@ class CreateHobbiesTable extends Migration
         Schema::create('hobbies', function (Blueprint $table) {
             $table->increments('id');
             $table->text('body');
+            $table->boolean('complete')->default(false);
             $table->timestamps();
         });
     }
