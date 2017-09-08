@@ -11,7 +11,7 @@
 |
 */
 
-
+// first part of tutorial: introduction to welcome and creating Hobby
 
 Route::get('/', 'WelcomeController@index');
 
@@ -20,3 +20,11 @@ Route::get('/about', 'WelcomeController@about');
 Route::get('/hobbies', 'HobbyController@index');
 
 Route::get('/hobbies/{hobbies}', 'HobbyController@show');
+
+// second part of tutorial: creating Blog
+Route::get('/posts', 'PostController@index');
+
+// for resources like this you typically need:
+// -Eloquent Model => Post
+// -controller => Posts
+// -migration => create_posts_table
