@@ -30,3 +30,7 @@ Route::get('/posts/{post}', 'PostController@show');
 // -Eloquent Model => Post
 // -controller => Posts
 // -migration => create_posts_table
+
+// third part of tutorial: practing creating a model, contoller, and migration
+
+Route::get('/albums', 'AlbumController@index');

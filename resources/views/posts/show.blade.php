@@ -1,4 +1,4 @@
-@extends ('layouts.master')
+@extends ('layouts.posts.master')
 
 @section('content')
   <h1>A place to show the post.</h1>

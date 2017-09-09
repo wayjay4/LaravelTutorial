@@ -19,24 +19,24 @@
 
   <body>
 
-    @include('layouts/nav')
+    @include('layouts/posts/nav')
 
-    @include('layouts/header')
+    @include('layouts/posts/header')
 
     <div class="container">
       <div class="row">
         <div class="col-sm-8 blog-main">
           @yield('content')
         </div><!-- /.blog-main -->
-        
+
         <div class="col-sm-3 offset-sm-1 blog-sidebar">
-          @include('layouts/sidebar')
+          @include('layouts/posts/sidebar')
         </div><!-- /.blog-sidebar -->
 
       </div><!-- /.row -->
     </div><!-- /.container -->
 
-    @include('layouts/footer')
+    @include('layouts/posts/footer')
 
   </body>
 </html>
