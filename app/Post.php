@@ -10,4 +10,11 @@ class Post extends Model
   protected $fillable = ['title', 'body'];
   // or for those we do not want to allow mass assigning we use the following:
   //protected $guarded = ['user_id'];
+
+  public function comments()
+  {
+    // the two method calls below are identical, just called in different ways
+    return $this->hasMany('App\Comment');
+    //return $this->hasMany(Comment::class);
+  }
 }
