@@ -26,6 +26,7 @@ class PostController extends Controller
       // POST '/posts'
 
       // our tasks here are:
+      // - validate the request data being posted
       // -create a new post using the request data
       // -save it to the database
       // -then redirect to the homepage
@@ -35,6 +36,14 @@ class PostController extends Controller
       //dd(request('title'));
       //dd(request('body'));
       //dd(request(['title', 'body']));
+
+      // - validate the request data being posted
+      // this tries to validate and if anything fails it will redirect you to
+      // the previous page to correct the errors that is populated in an errors variable
+      $this->validate(request(), [
+        'title' => 'required',
+        'body' => 'required'
+      ]);
 
       // -create a new post using the request data
       // on way of  declaring a new app post from another name space:
