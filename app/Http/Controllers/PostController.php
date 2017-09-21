@@ -11,7 +11,14 @@ class PostController extends Controller
     {
       // GET '/posts'
 
-      return view('posts.index');
+      // fetch all posts
+      //$posts = Post::all();
+      //$posts = Post::oldest()->get();
+      //$posts = Post::orderBy('created_at', 'asc')->get();
+      //$posts = Post::latest()->get();
+      $posts = Post::orderBy('created_at', 'desc')->get();
+
+      return view('posts.index', compact('posts'));
     }
 
     public function create()
@@ -68,11 +75,15 @@ class PostController extends Controller
       return redirect('/posts');
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
       // GET '/posts'
 
-      return view('posts.show');
+      // we are using 'wrap model binding' so we do not need the direct call below
+      // get post data from database
+      //$post = POST::find($id);
+
+      return view('posts.show', compact('post'));
     }
 
     public function edit($id)
