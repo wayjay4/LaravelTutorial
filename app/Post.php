@@ -18,6 +18,14 @@ class Post extends Model
     //return $this->hasMany(Comment::class);
   }
 
+  public function user()
+  {
+    // with this you can call call the following:
+    //$comment->post->user
+
+    return $this->belongsTo(User::class);
+  }
+
   public function addComment($body)
   {
     // the long form method
