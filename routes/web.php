@@ -30,6 +30,8 @@ Route::post('/posts', 'PostController@store');
 
 Route::get('/posts/{post}', 'PostController@show');
 
+Route::post('/posts/{post}/comments', 'CommentsController@store');
+
 // for resources like this you typically need:
 // -Eloquent Model => Post
 // -controller => Posts

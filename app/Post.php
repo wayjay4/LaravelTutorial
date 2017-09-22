@@ -17,4 +17,19 @@ class Post extends Model
     return $this->hasMany('App\Comment');
     //return $this->hasMany(Comment::class);
   }
+
+  public function addComment($body)
+  {
+    // the long form method
+    //Comment::create([
+    //  'body' => request('body'),
+    //  'post_id' => $this->id
+    //]);
+
+    // or we can use the relationship that posts has with comments
+    // where behind the scenes the post and comment id's are being used
+    //$this->comments()->create(['body' => $body]);
+    $this->comments()->create(compact('body'));
+
+  }
 }
