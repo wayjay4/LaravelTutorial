@@ -6,6 +6,8 @@
   </h2>
 
   <p class="blog-post-meta">
+    {{ $post->user->name }} on
+
     <?php
     // using timestamped created data inherits from the 'Carbon' library
     // for more information visit: 'carbon.nesbot.com/docs/'
