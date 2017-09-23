@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -21,20 +20,13 @@ class PostController extends Controller
     //$posts = Post::oldest()->get();
     //$posts = Post::orderBy('created_at', 'asc')->get();
     //$posts = Post::latest()->get();
-    $posts = Post::orderBy('created_at', 'desc');
+    //$posts = Post::orderBy('created_at', 'desc');
 
-    // if a request month and year exist, then filter it out of posts
-    // note: this is a WHERE CLAUSE in SQL
-    if($month = request('month')) :
-      $posts->whereMonth('created_at', Carbon::parse($month)->month);
-    endif;
-
-    if($year = request('year')) :
-      $posts->whereYear('created_at', $year);
-    endif;
-
-    // then fetch the post
-    $posts = $posts->get();
+    // refactoring of code for fetching posts
+    // using query scope filtering out month and year
+    $posts = Post::latest()
+      ->filter(request(['month', 'year']))
+      ->get();
 
     $archives = Post::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) as published')
       ->groupBy('year', 'month')

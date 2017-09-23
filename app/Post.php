@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -39,5 +40,19 @@ class Post extends Model
     //$this->comments()->create(['body' => $body]);
     $this->comments()->create(compact('body'));
 
+  }
+
+  // using query scope to filter
+  public function scopeFilter($query, $filters)
+  {
+    // if a request month and year exist, then filter it out of posts
+    // note: this is a WHERE CLAUSE in SQL
+      if(isset($filters['month']) && $month = $filters['month']) :
+        $query->whereMonth('created_at', Carbon::parse($month)->month);
+      endif;
+      
+      if(isset($filters['year']) && $year = $filters['year']) :
+        $query->whereYear('created_at', $year);
+      endif;
   }
 }
