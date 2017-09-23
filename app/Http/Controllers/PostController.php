@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Repositories\Posts;
 
 class PostController extends Controller
 {
@@ -11,7 +12,7 @@ class PostController extends Controller
     $this->middleware('auth')->except(['index', 'show']);
   }
 
-  public function index()
+  public function index(Posts $posts)
   {
     // GET '/posts'
 
@@ -24,9 +25,15 @@ class PostController extends Controller
 
     // refactoring of code for fetching posts
     // using query scope filtering out month and year
-    $posts = Post::latest()
-      ->filter(request(['month', 'year']))
-      ->get();
+    //$posts = Post::latest()
+    //  ->filter(request(['month', 'year']))
+    //  ->get();
+
+    // yet another way of creating a new instance of class from a repository
+    // and fetching all posts
+    //$posts = (new \App\Repositories\Posts)->all();
+    // or automatic inject dependency instead (i.e. why we put 'Post $posts in this class's parameter list')
+    $posts = $posts->all();
 
     $archives = Post::archives();
 
