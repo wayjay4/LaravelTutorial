@@ -17,5 +17,8 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+
+        // checks to see if text is in page
+        $this->get('/posts')->assertSee('The Bootstrap Blog');
     }
 }
