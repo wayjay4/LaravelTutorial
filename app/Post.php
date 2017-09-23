@@ -50,9 +50,18 @@ class Post extends Model
       if(isset($filters['month']) && $month = $filters['month']) :
         $query->whereMonth('created_at', Carbon::parse($month)->month);
       endif;
-      
+
       if(isset($filters['year']) && $year = $filters['year']) :
         $query->whereYear('created_at', $year);
       endif;
+  }
+
+  public static function archives()
+  {
+    return static::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) as published')
+      ->groupBy('year', 'month')
+      ->orderByRaw('min(created_at) desc')
+      ->get()
+      ->toArray();
   }
 }
